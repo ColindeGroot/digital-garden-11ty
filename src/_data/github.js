@@ -4,9 +4,14 @@ export default async function () {
   try {
     const response = await fetch(url);
     const data = await response.json();
+
+    if (data.message) {
+      return [];
+      console.log("git message:", data.message);
+    }
     return data;
   } catch (error) {
-    console.error("Fout bij ophalen GitHub data:", error);
+    console.error("Error with GitHub data:", error);
     return [];
   }
 }

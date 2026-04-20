@@ -15,26 +15,38 @@
   {% render header.liquid %}
 
   <section class="gitshowcase">
-    <h2 class="gitshowcase__title">Mijn GitHub Projecten:</h2>
+
+    <div class="gitshowcase__wrapper wrapper wrapper--dark">
+      <h2 class="gitshowcase__title">GitHub Projects:</h2>
+      <p class="gitshowcase__description"> See my most recent projects!</p>
+    </div>
+
     <ul class="gitshowcase__list">
-      {% for repo in github limit:3%}
+      {% for repo in github limit:6%}
       <li class="gitshowcase__item">
         <a href="{{ repo.html_url }}" target="_blank" class="gitshowcaselink">{{ repo.name }}</a>
         <p class="gitshowcase__description">{{ repo.description }}</p>
       </li>
       {% endfor %}
+
+      {% if github.size == 0 %}
+      <h3>No projects found! </h3>
+      <p>
+        This is most likely due to the GitHub API rate limit being exceeded. <br> please try
+        again later!
+      </p>
+      {% endif %}
     </ul>
   </section>
-
 
   <section class="wikis">
     <h2 class="wikis__title">Wiki's</h2>
 
     <div class="wikis__filters">
-      <button class="wikis__filter-btn active" data-filter="all">All</button>
+      <button class="wikis__filter--button button button--primary" data-filter="all">All</button>
 
       {% for tag in collections.wikiTags %}
-      <button class="wikis__filter-btn" data-filter="{{ tag }}">{{ tag }}</button>
+      <button class="wikis__filter--button button button--primary" data-filter="{{ tag }}">{{ tag }}</button>
       {% endfor %}
     </div>
 
@@ -51,11 +63,9 @@
 
 </body>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Grab all our buttons and blog posts
-    const filterButtons = document.querySelectorAll('.wikis__filter-btn');
+    const filterButtons = document.querySelectorAll('.wikis__filter--button');
     const blogPosts = document.querySelectorAll('.wikis__list__item');
 
     filterButtons.forEach(button => {
@@ -63,8 +73,10 @@
 
         const selectedFilter = button.getAttribute('data-filter');
 
+        filterButtons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+
         blogPosts.forEach(post => {
-          // Get the tags string from the post and turn it back into an array
           const postTags = post.getAttribute('data-tags').split(',');
 
           if (selectedFilter === 'all') {

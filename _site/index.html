@@ -22,40 +22,43 @@
 </nav>
 
   <section class="gitshowcase">
-    <h2 class="gitshowcase__title">Mijn GitHub Projecten:</h2>
+
+    <div class="gitshowcase__wrapper wrapper wrapper--dark">
+      <h2 class="gitshowcase__title">GitHub Projects:</h2>
+      <p class="gitshowcase__description"> See my most recent projects!</p>
+    </div>
+
     <ul class="gitshowcase__list">
       
-      <li class="gitshowcase__item">
-        <a href="https://github.com/ColindeGroot/all-human-accessible-website" target="_blank" class="gitshowcaselink">all-human-accessible-website</a>
-        <p class="gitshowcase__description">Ontwerp en maak voor een opdrachtgever een component/pagina/site toegankelijk volgens WCAG richtlijnen</p>
-      </li>
+
       
-      <li class="gitshowcase__item">
-        <a href="https://github.com/ColindeGroot/ColindeGroot" target="_blank" class="gitshowcaselink">ColindeGroot</a>
-        <p class="gitshowcase__description">Config files for my GitHub profile.</p>
-      </li>
-      
-      <li class="gitshowcase__item">
-        <a href="https://github.com/ColindeGroot/connect-your-tribe-profile-card" target="_blank" class="gitshowcaselink">connect-your-tribe-profile-card</a>
-        <p class="gitshowcase__description">Redesign visitekaartje met NodeJS en een REST API</p>
-      </li>
+      <h3>No projects found! </h3>
+      <p>
+        This is most likely due to the GitHub API rate limit being exceeded. <br> please try
+        again later!
+      </p>
       
     </ul>
   </section>
-
 
   <section class="wikis">
     <h2 class="wikis__title">Wiki's</h2>
 
     <div class="wikis__filters">
-      <button class="wikis__filter-btn active" data-filter="all">All</button>
+      <button class="wikis__filter--button button button--primary" data-filter="all">All</button>
 
       
-      <button class="wikis__filter-btn" data-filter="css">css</button>
+      <button class="wikis__filter--button button button--primary" data-filter="css">css</button>
       
-      <button class="wikis__filter-btn" data-filter="new features">new features</button>
+      <button class="wikis__filter--button button button--primary" data-filter="svelte(kit)">svelte(kit)</button>
       
-      <button class="wikis__filter-btn" data-filter="Directus">Directus</button>
+      <button class="wikis__filter--button button button--primary" data-filter="new features">new features</button>
+      
+      <button class="wikis__filter--button button button--primary" data-filter="Directus">Directus</button>
+      
+      <button class="wikis__filter--button button button--primary" data-filter="we-love-web">we-love-web</button>
+      
+      <button class="wikis__filter--button button button--primary" data-filter="workshop">workshop</button>
       
     </div>
 
@@ -67,22 +70,16 @@
         <a href="/wiki/12-11-2025/" class="wikis__link">View full post</a>
       </li>
       
-      <li class="wikis__list__item" data-tags="wiki">
-        <h3></h3>
-        <p></p>
+      <li class="wikis__list__item" data-tags="wiki,css,svelte(kit)">
+        <h3>Svelte components</h3>
+        <p>Using components in sveltekit</p>
         <a href="/wiki/15‐9‐2025/" class="wikis__link">View full post</a>
       </li>
       
-      <li class="wikis__list__item" data-tags="wiki">
-        <h3></h3>
-        <p></p>
+      <li class="wikis__list__item" data-tags="wiki,css">
+        <h3>Scroll animations</h3>
+        <p>using scroll animations for progessive timelines in css</p>
         <a href="/wiki/16‐10‐2025/" class="wikis__link">View full post</a>
-      </li>
-      
-      <li class="wikis__list__item" data-tags="wiki">
-        <h3></h3>
-        <p></p>
-        <a href="/wiki/onMount in svelte/" class="wikis__link">View full post</a>
       </li>
       
       <li class="wikis__list__item" data-tags="wiki,css,new features">
@@ -97,21 +94,15 @@
         <a href="/wiki/Filtering-in-Directus/" class="wikis__link">View full post</a>
       </li>
       
-      <li class="wikis__list__item" data-tags="wiki">
-        <h3></h3>
-        <p></p>
-        <a href="/wiki/Home/" class="wikis__link">View full post</a>
-      </li>
-      
-      <li class="wikis__list__item" data-tags="wiki">
-        <h3></h3>
-        <p></p>
+      <li class="wikis__list__item" data-tags="wiki,we-love-web">
+        <h3>We-love-web Decathlon</h3>
+        <p>With Trystian Offerman from Decathlon, about working with styleguides, design systems, and components.</p>
         <a href="/wiki/We-love-web-Trystian-Offerman/" class="wikis__link">View full post</a>
       </li>
       
-      <li class="wikis__list__item" data-tags="wiki">
-        <h3></h3>
-        <p></p>
+      <li class="wikis__list__item" data-tags="wiki,workshop,svelte(kit)">
+        <h3>Bitacademy workshop</h3>
+        <p>Visiting bitacademy  and providing a workshop.</p>
         <a href="/wiki/Workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
       </li>
       
@@ -120,11 +111,9 @@
 
 </body>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Grab all our buttons and blog posts
-    const filterButtons = document.querySelectorAll('.wikis__filter-btn');
+    const filterButtons = document.querySelectorAll('.wikis__filter--button');
     const blogPosts = document.querySelectorAll('.wikis__list__item');
 
     filterButtons.forEach(button => {
@@ -132,8 +121,10 @@
 
         const selectedFilter = button.getAttribute('data-filter');
 
+        filterButtons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+
         blogPosts.forEach(post => {
-          // Get the tags string from the post and turn it back into an array
           const postTags = post.getAttribute('data-tags').split(',');
 
           if (selectedFilter === 'all') {

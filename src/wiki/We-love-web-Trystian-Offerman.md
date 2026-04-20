@@ -1,3 +1,9 @@
+---
+title: We-love-web Decathlon
+summary: With Trystian Offerman from Decathlon, about working with styleguides, design systems, and components.
+tags: we-love-web
+---
+
 # We ♥ Web – 21st of November
 
 With Trystian Offerman from Decathlon, about working with styleguides, design systems, and components.
