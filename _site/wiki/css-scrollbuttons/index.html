@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS scrollButtons</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/wiki.css">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-vsc-dark-plus.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-vsc-dark-plus.css">
+  </noscript>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/">← Terug naar Home</a>
+  </nav>
+
+  <main>
+    <h1>CSS ::scroll-buttons</h1>
+<p>Scroll buttons is a new feature in CSS which can make a functional slider without the need of any JS.</p>
+<p>The scroll buttons in CSS is not widely supported so it is more a a cool function rather than a replacement. Make sure You use supports in CSS and have js as an fallback<br>
+<img width="1000" height="300" alt="image" src="https://github.com/user-attachments/assets/604e2c85-6dfc-49d4-97f4-18cb3a7e3fef"></p>
+<p>I used this function on my I-love-web. My goal is to add a scrollmarker group as well to show the active slide.</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.git-repos::scroll-button(*)</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"&lt;"</span><span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #111112<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.git-repos::scroll-button(right)</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">">"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>by adding a scroll-snap to the slider the buttons will slide more smoothly and accurate instead of skipping random items</p>
+<img width="2526" height="381" alt="image" src="https://github.com/user-attachments/assets/3dead0e0-6f52-43a1-9764-29415048f60d">
+<p>If you want to position these buttons you can use the new achor positioning. Just give your carousel an anchor name and set the position anchor on the buttons:</p>
+<pre class="language-css"><code class="language-css"><span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+<span class="token property">position-area</span><span class="token punctuation">:</span> left center<span class="token punctuation">;</span>
+<span class="token property">position-anchor</span><span class="token punctuation">:</span> --repocarousel<span class="token punctuation">;</span></code></pre>
+
+  </main>
+
+</body>
+
+</html>

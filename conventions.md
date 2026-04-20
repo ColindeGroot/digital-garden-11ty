@@ -11,9 +11,13 @@ BEM (Block Element Modifier) uses modifiers on top of already defined elements. 
 
 For examples check: [The introduction to BEM](https://getbem.com/introduction/)
 
+### Blognames
+
+Blogs in md. files are shown differenlty on the wiki which is why it will use a different convention for naming compared to other files. Instead of sepparating words with camelCase ( will be mentioned later) markdown files wil sepparte word with a dash e.g. new-blog. whilst capetalised letter don't matter or affect the layout of the md it should be in lowercase just for consistent naming.
+
 ### Functions, filenames etc
 
-Functions, filenames and other naming scenario's outside of classnames are using the CamelCase method.
+Functions, filenames and other naming scenario's outside of classnames and blogs are using the camelCase method.
 
 It is commonly used for variables, functions, and methods, often starting with a lowercase letter like: camelCaseFunction
 
