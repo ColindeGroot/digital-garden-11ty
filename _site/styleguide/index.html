@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styleguide</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section class="bem-demo">
+        <h2>BEM Buttons</h2>
+        <p>Block: <code>.button</code> — Element: <code>.button__icon</code> — Modifier: <code>.button--*</code></p>
+
+        <h3>Modifiers (variants)</h3>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+            <button class="button">Default</button>
+            <button class="button button--primary">Primary</button>
+            <button class="button button--secondary">Secondary</button>
+            <button class="button button--danger">Danger</button>
+            <button class="button button--disabled" disabled="">Disabled</button>
+        </div>
+
+        <h3>Size modifiers</h3>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+            <button class="button button--primary button--small">Small</button>
+            <button class="button button--primary">Medium (default)</button>
+            <button class="button button--primary button--large">Large</button>
+        </div>
+
+
+    </section>
+</body>
+
+</html>

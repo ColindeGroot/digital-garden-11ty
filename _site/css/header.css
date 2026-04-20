@@ -1,0 +1,10 @@
+.navigation {
+  background-color: #1d1d1b;
+}
+  .navigation__menu {
+    display: flex;
+    gap: var(--spacing-m);
+  }
+  .navigation__menu__item {
+      cursor: pointer;
+    }

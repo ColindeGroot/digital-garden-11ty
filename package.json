@@ -1,0 +1,29 @@
+{
+  "name": "11ty-garden",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-wiki": "cd src/mijn-wiki && git pull origin master",
+    "build": "npm run update-wiki && eleventy",
+    "start": "npm run update-wiki && eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "autoprefixer": "^10.4.27",
+    "cssnano": "^7.1.4",
+    "markdown-it-wikilinks": "^1.4.0",
+    "postcss": "^8.5.8",
+    "postcss-import": "^16.1.1",
+    "postcss-nested": "^7.0.2"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "markdown-it": "^14.1.1"
+  }
+}

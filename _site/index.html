@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+
+  <title>Digital garden</title>
+</head>
+
+<body>
+
+  <nav class="navigation">
+    <ul class="navigation__menu">
+        <li class="navigation__item"><a class="navigation__link" href="/">Home</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">2</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">3</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">4</a></li>
+    </ul>
+</nav>
+
+  <section class="gitshowcase">
+    <h2 class="gitshowcase__title">Mijn GitHub Projecten:</h2>
+    <ul class="gitshowcase__list">
+      
+      <li class="gitshowcase__item">
+        <a href="https://github.com/ColindeGroot/all-human-accessible-website" target="_blank" class="gitshowcaselink">all-human-accessible-website</a>
+        <p class="gitshowcase__description">Ontwerp en maak voor een opdrachtgever een component/pagina/site toegankelijk volgens WCAG richtlijnen</p>
+      </li>
+      
+      <li class="gitshowcase__item">
+        <a href="https://github.com/ColindeGroot/ColindeGroot" target="_blank" class="gitshowcaselink">ColindeGroot</a>
+        <p class="gitshowcase__description">Config files for my GitHub profile.</p>
+      </li>
+      
+      <li class="gitshowcase__item">
+        <a href="https://github.com/ColindeGroot/connect-your-tribe-profile-card" target="_blank" class="gitshowcaselink">connect-your-tribe-profile-card</a>
+        <p class="gitshowcase__description">Redesign visitekaartje met NodeJS en een REST API</p>
+      </li>
+      
+    </ul>
+  </section>
+
+
+  <section class="wikis">
+    <h2 class="wikis__title">Wiki's</h2>
+
+    <div class="wikis__filters">
+      <button class="wikis__filter-btn active" data-filter="all">All</button>
+
+      
+      <button class="wikis__filter-btn" data-filter="css">css</button>
+      
+      <button class="wikis__filter-btn" data-filter="new features">new features</button>
+      
+      <button class="wikis__filter-btn" data-filter="Directus">Directus</button>
+      
+    </div>
+
+    <ul class="wikis__list">
+      
+      <li class="wikis__list__item" data-tags="wiki,css">
+        <h3>Styling details content in CSS</h3>
+        <p>Using CSS I made an interesting and enhanched layout using details and summary.</p>
+        <a href="/wiki/12-11-2025/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki">
+        <h3></h3>
+        <p></p>
+        <a href="/wiki/15‐9‐2025/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki">
+        <h3></h3>
+        <p></p>
+        <a href="/wiki/16‐10‐2025/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki">
+        <h3></h3>
+        <p></p>
+        <a href="/wiki/onMount in svelte/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki,css,new features">
+        <h3>CSS scrollButtons</h3>
+        <p>The new CSS scrollbuttons allows us to make scroll functions without the need of js!</p>
+        <a href="/wiki/CSS-scroll-buttons/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki,Directus">
+        <h3>Directus filters</h3>
+        <p>A dive into the many possibility's with directus filtering</p>
+        <a href="/wiki/Filtering-in-Directus/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki">
+        <h3></h3>
+        <p></p>
+        <a href="/wiki/Home/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki">
+        <h3></h3>
+        <p></p>
+        <a href="/wiki/We-love-web-Trystian-Offerman/" class="wikis__link">View full post</a>
+      </li>
+      
+      <li class="wikis__list__item" data-tags="wiki">
+        <h3></h3>
+        <p></p>
+        <a href="/wiki/Workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
+      </li>
+      
+    </ul>
+  </section>
+
+</body>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Grab all our buttons and blog posts
+    const filterButtons = document.querySelectorAll('.wikis__filter-btn');
+    const blogPosts = document.querySelectorAll('.wikis__list__item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+
+        const selectedFilter = button.getAttribute('data-filter');
+
+        blogPosts.forEach(post => {
+          // Get the tags string from the post and turn it back into an array
+          const postTags = post.getAttribute('data-tags').split(',');
+
+          if (selectedFilter === 'all') {
+            post.style.display = '';
+          } else if (postTags.includes(selectedFilter)) {
+            post.style.display = '';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+
+      });
+    });
+  });
+</script>
+
+</html>

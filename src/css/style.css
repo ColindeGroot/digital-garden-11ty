@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@view-transistion {
+  navigation: auto;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  background-color: #eee;
+  font-family: var(--font-family);
+
+  --font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+
+  /*Font-sizes */
+  --font-size-s: 0.8rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.2rem;
+  --font-size-xl: 1.5rem;
+
+  /* Breakpoints */
+  --viewport-s: 480px;
+  --viewport--m: 1024px;
+  --viewport-l: 1440px;
+
+  /* colors */
+
+  /* margins */
+  --spacing-xs: 0.5em;
+  --spacing-s: 1em;
+  --spacing-m: 1.5em;
+  --spacing-l: 2em;
+  --spacing-xl: 2.5em;
+  --spacing-section: 5dvh;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+
+  li {
+  }
+}
+
+section {
+  margin: var(--spacing-section) 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-m);
+  text-decoration: none;
+  background: #555;
+  color: #fff;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &--primary {
+    background: #1d1d1b;
+    color: #eee;
+    border-color: #1d1d1b;
+  }
+
+  &--danger {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+  }
+
+  &--small {
+    font-size: var(--font-size-s);
+    padding: 0.25em var(--spacing-s);
+  }
+
+  &--large {
+    font-size: var(--font-size-l);
+    padding: var(--spacing-s) var(--spacing-l);
+  }
+
+  &--disabled,
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* header */
+.navigation {
+  background-color: #1d1d1b;
+
+  &__menu {
+    display: flex;
+    gap: var(--spacing-m);
+  }
+
+  &__item {
+    cursor: pointer;
+  }
+
+  &__link {
+    display: block;
+    padding: var(--spacing-s) var(--spacing-m);
+    color: #eee;
+    text-decoration: none;
+  }
+}

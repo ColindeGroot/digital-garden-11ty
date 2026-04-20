@@ -1,0 +1,28 @@
+.gitshowcase {
+  &__title {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.wikis {
+  &__title {
+    font-size: var(--font-size-l);
+  }
+
+  &__filters {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+
+    &__item {
+      display: grid;
+      grid-template-columns: subgrid;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+pre {
+  background-color: #2d2d2b;
+  border-radius: 10px;
+  padding: 1em;
+  overflow: hidden;
+}
+
+  pre code {
+    font-size: var(--font-size-m);
+  }
+
+p {
+  margin: 1em 0;
+}
+
+img {
+  max-width: 80vw;
+  height: auto;
+  margin: 1em 0;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directus filters</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/wiki.css">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-vsc-dark-plus.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-vsc-dark-plus.css">
+  </noscript>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/">← Terug naar Home</a>
+  </nav>
+
+  <main>
+    <h1>Directus Filtering</h1>
+<p>Directus offers filters in the url which is ideal if you only want to extract specfic data. There can be multiple filters in the url making you able to be very specfic during the filtering. Ideal if you have a lot of entrys and only need specfic data based on user inputs.</p>
+<h2>Examples</h2>
+<p>I have already used the filter for mulitple scenario's. One of them being for sorting.</p>
+<h3>Sorting</h3>
+<p>Let's say I have a classroom full of people and I want to sort people based on initials. To test this out is tried out the filters in three different scenario's</p>
+<ol>
+<li>
+<p>Sort from A to Z:<br>
+<code>https://fdnd.directus.app/items/person?limit=-1&amp;sort=name</code></p>
+</li>
+<li>
+<p>Start with the letter D:<br>
+<code>https://fdnd.directus.app/items/person?limit=-1&amp;filter={%22name%22:{%22_starts_with%22:%22D%22 }}</code></p>
+</li>
+<li>
+<p>Start with letter K or D:<br>
+<code>https://fdnd.directus.app/items/person?fields=name&amp;filter={ &quot;_or&quot;: [ { &quot;name&quot;: { &quot;_starts_with&quot;: &quot;D&quot; } }, { &quot;name&quot;: { &quot;_starts_with&quot;: &quot;K&quot; } } ] }</code></p>
+</li>
+</ol>
+<h3>Filtering</h3>
+<p>I also used filters in the url to filter products and create a pagination function. I made 2 variables which i use to calculate the products per page. One for the amount and for for the offset.</p>
+<p>For this project I used a pagination function. The project involved a lot of products. Having all the products displayed directly is bad for UX and devestating for the performance. To fix this I added a total_count querry from directus for faster calcultating of the products per page. Beneath the products is a navigation with buttons that help the user navigate the pages.for each button the querry is changed.</p>
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+
+  <title>Digital garden</title>
+</head>
+
+<body>
+
+  {% render header.liquid %}
+
+  <section class="gitshowcase">
+    <h2 class="gitshowcase__title">Mijn GitHub Projecten:</h2>
+    <ul class="gitshowcase__list">
+      {% for repo in github limit:3%}
+      <li class="gitshowcase__item">
+        <a href="{{ repo.html_url }}" target="_blank" class="gitshowcaselink">{{ repo.name }}</a>
+        <p class="gitshowcase__description">{{ repo.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+
+  <section class="wikis">
+    <h2 class="wikis__title">Wiki's</h2>
+
+    <div class="wikis__filters">
+      <button class="wikis__filter-btn active" data-filter="all">All</button>
+
+      {% for tag in collections.wikiTags %}
+      <button class="wikis__filter-btn" data-filter="{{ tag }}">{{ tag }}</button>
+      {% endfor %}
+    </div>
+
+    <ul class="wikis__list">
+      {% for post in collections.wiki %}
+      <li class="wikis__list__item" data-tags="{{ post.data.tags | join: ',' }}">
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.summary }}</p>
+        <a href="{{ post.url }}" class="wikis__link">View full post</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+</body>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Grab all our buttons and blog posts
+    const filterButtons = document.querySelectorAll('.wikis__filter-btn');
+    const blogPosts = document.querySelectorAll('.wikis__list__item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+
+        const selectedFilter = button.getAttribute('data-filter');
+
+        blogPosts.forEach(post => {
+          // Get the tags string from the post and turn it back into an array
+          const postTags = post.getAttribute('data-tags').split(',');
+
+          if (selectedFilter === 'all') {
+            post.style.display = '';
+          } else if (postTags.includes(selectedFilter)) {
+            post.style.display = '';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+
+      });
+    });
+  });
+</script>
+
+</html>
