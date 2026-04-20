@@ -1,25 +1,26 @@
 .gitshowcase {
   display: flex;
   flex: 1;
-  gap: var(--spacing-m);
+  gap: var(--spacing-s);
   &__wrapper {
     min-width: 250px;
-    &__title {
-      font-size: var(--font-size-xl);
-    }
   }
   &__list:has(li) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-m);
+    gap: var(--spacing-s);
+  }
+  &__item {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    padding: var(--spacing-s);
+    box-shadow: var(--box-shadow-cards);
+    border-radius: var(--border-radius-main);
   }
 }
 
 .wikis {
-  &__title {
-    font-size: var(--font-size-l);
-  }
-
   &__filters {
     display: flex;
     gap: 1em;
@@ -37,6 +38,7 @@
       grid-row: span 3;
       grid-template-rows: subgrid;
       border: 1px solid red;
+      border-radius: var(--border-radius-main);
     }
   }
 }

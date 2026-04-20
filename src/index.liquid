@@ -24,8 +24,9 @@
     <ul class="gitshowcase__list">
       {% for repo in github limit:6%}
       <li class="gitshowcase__item">
-        <a href="{{ repo.html_url }}" target="_blank" class="gitshowcaselink">{{ repo.name }}</a>
+        <h3>{{ repo.name }}</h3>
         <p class="gitshowcase__description">{{ repo.description }}</p>
+        <a href="{{ repo.html_url }}" target="_blank" class="gitshowcaselink">View project</a>
       </li>
       {% endfor %}
 
