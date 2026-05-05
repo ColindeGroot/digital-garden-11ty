@@ -24,7 +24,7 @@ body {
 
   /* Breakpoints */
   --viewport-s: 480px;
-  --viewport--m: 1024px;
+  --viewport-m: 1024px;
   --viewport-l: 1440px;
 
   /* colors */

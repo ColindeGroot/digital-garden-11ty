@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <title>svelte(kit) – Colin - Home</title>
+</head>
+
+<body>
+
+  <nav class="navigation">
+    <ul class="navigation__menu">
+        <li class="navigation__item"><a class="navigation__link" href="/">Home</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">2</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">3</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">4</a></li>
+    </ul>
+</nav>
+
+  <main>
+    <section class="wikis">
+      <h2 class="wikis__title">Wiki's – svelte(kit)</h2>
+
+      <div class="wikis__filters">
+        <a href="/" class="wikis__filter--button button button--primary">All</a>
+
+        
+        <a href="/tags/css/" class="wikis__filter--button button button--primary">css</a>
+        
+        <a href="/tags/svelte(kit)/" class="wikis__filter--button button button--primary selected">svelte(kit)</a>
+        
+        <a href="/tags/new features/" class="wikis__filter--button button button--primary">new features</a>
+        
+        <a href="/tags/Directus/" class="wikis__filter--button button button--primary">Directus</a>
+        
+        <a href="/tags/we-love-web/" class="wikis__filter--button button button--primary">we-love-web</a>
+        
+        <a href="/tags/workshop/" class="wikis__filter--button button button--primary">workshop</a>
+        
+      </div>
+
+      <ul class="wikis__list">
+        
+        
+        <li class="wikis__list__item" data-tags="wiki,css,svelte(kit)">
+          <h3>Svelte components</h3>
+          <p>Using components in sveltekit</p>
+          <a href="/wiki/svelte-components/" class="wikis__link">View full post</a>
+        </li>
+        
+        <li class="wikis__list__item" data-tags="wiki,workshop,svelte(kit)">
+          <h3>Bitacademy workshop</h3>
+          <p>Visiting bitacademy  and providing a workshop.</p>
+          <a href="/wiki/workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
+        </li>
+        
+      </ul>
+    </section>
+  </main>
+
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterLinks = document.querySelectorAll('.wikis__filter--button');
+    const blogPosts = document.querySelectorAll('.wikis__list__item');
+
+    filterLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const selectedFilter = link.getAttribute('data-filter');
+        if (!selectedFilter) return;
+
+        e.preventDefault();
+
+        filterLinks.forEach(l => l.classList.remove('selected'));
+        link.classList.add('selected');
+
+        blogPosts.forEach(post => {
+          const postTags = post.getAttribute('data-tags').split(',');
+          post.style.display = postTags.includes(selectedFilter) ? '' : 'none';
+        });
+      });
+    });
+  });
+</script>
+
+</html>

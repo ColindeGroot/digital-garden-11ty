@@ -1,22 +1,31 @@
 .gitshowcase {
   display: flex;
+  flex-direction: column;
   flex: 1;
   gap: var(--spacing-s);
+
+  @media (min-width: var(--viewport-l)) {
+    display: block;
+  }
+
   &__wrapper {
     min-width: 250px;
   }
+
   &__list:has(li) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-s);
   }
+
   &__item {
     display: grid;
     grid-row: span 3;
     grid-template-rows: subgrid;
     padding: var(--spacing-s);
-    box-shadow: var(--box-shadow-cards);
+    border: 3px solid #000;
     border-radius: var(--border-radius-main);
+    box-shadow: 2px 2px 1px #000;
   }
 }
 
@@ -29,16 +38,17 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: auto;
     gap: 1em;
 
     &__item {
+      padding: var(--spacing-s);
       display: grid;
       grid-row: span 3;
       grid-template-rows: subgrid;
-      border: 1px solid red;
       border-radius: var(--border-radius-main);
+      box-shadow: var(--box-shadow-cards);
     }
   }
 }

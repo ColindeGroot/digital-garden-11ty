@@ -1,3 +1,8 @@
+---
+title: Home
+description: A digital garden showcasing my projects and wiki posts.
+---
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,60 +12,65 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/home.css">
 
-  <title>Digital garden</title>
+  <title>{{ title }}</title>
 </head>
 
 <body>
 
   {% render header.liquid %}
 
-  <section class="gitshowcase">
+  <main>
 
-    <div class="gitshowcase__wrapper wrapper wrapper--dark">
-      <h2 class="gitshowcase__title">GitHub Projects:</h2>
-      <p class="gitshowcase__description"> See my most recent projects!</p>
-    </div>
+    <section class="gitshowcase">
 
-    <ul class="gitshowcase__list">
-      {% for repo in github limit:6%}
-      <li class="gitshowcase__item">
-        <h3>{{ repo.name }}</h3>
-        <p class="gitshowcase__description">{{ repo.description }}</p>
-        <a href="{{ repo.html_url }}" target="_blank" class="gitshowcaselink">View project</a>
-      </li>
-      {% endfor %}
+      <div class="gitshowcase__wrapper wrapper wrapper--dark">
+        <h2 class="gitshowcase__title">GitHub Projects:</h2>
+        <p class="gitshowcase__description"> See my most recent projects!</p>
+      </div>
 
-      {% if github.size == 0 %}
-      <h3>No projects found! </h3>
-      <p>
-        This is most likely due to the GitHub API rate limit being exceeded. <br> please try
-        again later!
-      </p>
-      {% endif %}
-    </ul>
-  </section>
+      <ul class="gitshowcase__list">
+        {% for repo in github limit:6%}
+        <li class="gitshowcase__item">
+          <h3>{{ repo.name }}</h3>
+          <p class="gitshowcase__description">{{ repo.description }}</p>
+          <a href="{{ repo.html_url }}" aria-label="Learn more about {{ repo.name }}" target="_blank"
+            class="gitshowcaselink">View more</a>
+        </li>
+        {% endfor %}
 
-  <section class="wikis">
-    <h2 class="wikis__title">Wiki's</h2>
+        {% if github.size == 0 %}
+        <h3>No projects found! </h3>
+        <p>
+          This is most likely due to the GitHub API rate limit being exceeded. <br> please try
+          again later!
+        </p>
+        {% endif %}
+      </ul>
+    </section>
 
-    <div class="wikis__filters">
-      <button class="wikis__filter--button button button--primary" data-filter="all">All</button>
+    <section class="wikis">
+      <h2 class="wikis__title">Wiki's</h2>
 
-      {% for tag in collections.wikiTags %}
-      <button class="wikis__filter--button button button--primary" data-filter="{{ tag }}">{{ tag }}</button>
-      {% endfor %}
-    </div>
+      <div class="wikis__filters">
+        <button class="wikis__filter--button button button--primary selected" data-filter="all">All</button>
 
-    <ul class="wikis__list">
-      {% for post in collections.wiki %}
-      <li class="wikis__list__item" data-tags="{{ post.data.tags | join: ',' }}">
-        <h3>{{ post.data.title }}</h3>
-        <p>{{ post.data.summary }}</p>
-        <a href="{{ post.url }}" class="wikis__link">View full post</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
+        {% for tag in collections.wikiTags %}
+        <button class="wikis__filter--button button button--primary" data-filter="{{ tag }}">{{ tag }}</button>
+        {% endfor %}
+      </div>
+
+      <ul class="wikis__list">
+        {% for post in collections.wiki %}
+        <li class="wikis__list__item" data-tags="{{ post.data.tags | join: ',' }}">
+          <h3>{{ post.data.title }}</h3>
+          <p>{{ post.data.summary }}</p>
+          <a href="{{ post.url }}" class="wikis__link">View full post</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+  </main>
 
 </body>
 

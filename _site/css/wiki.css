@@ -1,3 +1,7 @@
+body {
+  margin: var(--spacing-section) var(--spacing-xl);
+}
+
 pre {
   background-color: #2d2d2b;
   border-radius: 10px;
@@ -5,7 +9,7 @@ pre {
   overflow: hidden;
 }
 
-  pre code {
+pre code {
     font-size: var(--font-size-m);
   }
 

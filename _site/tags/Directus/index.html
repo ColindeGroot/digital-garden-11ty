@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <title>Directus – Colin - Home</title>
+</head>
+
+<body>
+
+  <nav class="navigation">
+    <ul class="navigation__menu">
+        <li class="navigation__item"><a class="navigation__link" href="/">Home</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">2</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">3</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#">4</a></li>
+    </ul>
+</nav>
+
+  <main>
+    <section class="wikis">
+      <h2 class="wikis__title">Wiki's – Directus</h2>
+
+      <div class="wikis__filters">
+        <a href="/" class="wikis__filter--button button button--primary">All</a>
+
+        
+        <a href="/tags/css/" class="wikis__filter--button button button--primary">css</a>
+        
+        <a href="/tags/svelte(kit)/" class="wikis__filter--button button button--primary">svelte(kit)</a>
+        
+        <a href="/tags/new features/" class="wikis__filter--button button button--primary">new features</a>
+        
+        <a href="/tags/Directus/" class="wikis__filter--button button button--primary selected">Directus</a>
+        
+        <a href="/tags/we-love-web/" class="wikis__filter--button button button--primary">we-love-web</a>
+        
+        <a href="/tags/workshop/" class="wikis__filter--button button button--primary">workshop</a>
+        
+      </div>
+
+      <ul class="wikis__list">
+        
+        
+        <li class="wikis__list__item" data-tags="wiki,Directus">
+          <h3>Directus filters</h3>
+          <p>A dive into the many possibility's with directus filtering</p>
+          <a href="/wiki/filtering-in-directus/" class="wikis__link">View full post</a>
+        </li>
+        
+      </ul>
+    </section>
+  </main>
+
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterLinks = document.querySelectorAll('.wikis__filter--button');
+    const blogPosts = document.querySelectorAll('.wikis__list__item');
+
+    filterLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const selectedFilter = link.getAttribute('data-filter');
+        if (!selectedFilter) return;
+
+        e.preventDefault();
+
+        filterLinks.forEach(l => l.classList.remove('selected'));
+        link.classList.add('selected');
+
+        blogPosts.forEach(post => {
+          const postTags = post.getAttribute('data-tags').split(',');
+          post.style.display = postTags.includes(selectedFilter) ? '' : 'none';
+        });
+      });
+    });
+  });
+</script>
+
+</html>
