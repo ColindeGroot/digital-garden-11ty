@@ -3,7 +3,7 @@ body {
 }
 
 pre {
-  background-color: #2d2d2b;
+  background-color: var(--color-background-dark);
   border-radius: 10px;
   padding: 1em;
   overflow: hidden;

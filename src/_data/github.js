@@ -20,7 +20,24 @@ export default async function () {
     }
 
     const data = await tokenFetch.json();
-    return data;
+
+    const stripRepoNames = data.map((repo) => {
+      return {
+        ...repo,
+        formattedName: repo.name.replaceAll("-", " "),
+      };
+    });
+
+    // dont return the repos without a language
+    const filteredRepos = stripRepoNames.filter((repo) => repo.language);
+
+    filteredRepos.forEach((repo) => {
+      repo.formattedName =
+        repo.formattedName.charAt(0).toUpperCase() +
+        repo.formattedName.slice(1);
+    });
+
+    return filteredRepos;
   } catch (error) {
     console.error("Error fetching Github data:", error);
     return [];

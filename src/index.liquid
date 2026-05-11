@@ -21,20 +21,29 @@ description: A digital garden showcasing my projects and wiki posts.
 
   <main>
 
+
     <section class="gitshowcase">
 
-      <div class="gitshowcase__wrapper wrapper wrapper--dark">
+      <div class="gitshowcase__wrapper">
         <h2 class="gitshowcase__title">GitHub Projects:</h2>
-        <p class="gitshowcase__description"> See my most recent projects!</p>
+        <p class="gitshowcase__description"> I created and contributed to multiple projects over the past years. Here
+          are some of the projects I've been working on!</p>
       </div>
 
       <ul class="gitshowcase__list">
-        {% for repo in github limit:6%}
+        {% for repo in github limit:8%}
         <li class="gitshowcase__item">
-          <h3>{{ repo.name }}</h3>
-          <p class="gitshowcase__description">{{ repo.description }}</p>
-          <a href="{{ repo.html_url }}" aria-label="Learn more about {{ repo.name }}" target="_blank"
-            class="gitshowcaselink">View more</a>
+
+          <div class="gitshowcase__icons">
+            <span class="gitshowcase__label label">{{ repo.language }}</span>
+            <a href="{{ repo.html_url }}" aria-label="Learn more about {{ repo.formattedName }}" target="_blank"
+              class="button button--rounded">x</a>
+          </div>
+
+          <div class="gitshowcase__content">
+            <h3>{{ repo.formattedName }}</h3>
+            <p>{{ repo.description }}</p>
+          </div>
         </li>
         {% endfor %}
 
