@@ -17,7 +17,7 @@ description: A digital garden showcasing my projects and wiki posts.
 
 <body>
 
-  {% render header.liquid %}
+  {% render "header.liquid" %}
 
   <main>
 
@@ -37,7 +37,7 @@ description: A digital garden showcasing my projects and wiki posts.
           <div class="gitshowcase__icons">
             <span class="gitshowcase__label label">{{ repo.language }}</span>
             <a href="{{ repo.html_url }}" aria-label="Learn more about {{ repo.formattedName }}" target="_blank"
-              class="button button--rounded">x</a>
+              class="button button--rounded">{% render "icons/link.liquid" %}</a>
           </div>
 
           <div class="gitshowcase__content">
@@ -54,7 +54,13 @@ description: A digital garden showcasing my projects and wiki posts.
           again later!
         </p>
         {% endif %}
+        <div class="gitshowcase__buttons">
+          <button class="gitshowcase__button button button--primary">Previous</button>
+          <button class="gitshowcase__button button button--primary">Next</button>
+        </div>
       </ul>
+
+
     </section>
 
     <section class="wikis">
@@ -70,9 +76,11 @@ description: A digital garden showcasing my projects and wiki posts.
 
       <ul class="wikis__list">
         {% for post in collections.wiki %}
-        <li class="wikis__list__item" data-tags="{{ post.data.tags | join: ',' }}">
+        <li class="wikis__list__item{% if post.data.image %} wikis__list__item--with-image{% endif %}"
+          data-tags="{{ post.data.tags | join: ',' }}" {% if post.data.image
+          %}style="--wiki-image: url('{{ post.data.image }}');" {% endif %}>
           <h3>{{ post.data.title }}</h3>
-          <p>{{ post.data.summary }}</p>
+          <p>{{ post.data.summary | truncate: 120 }}</p>
           <a href="{{ post.url }}" class="wikis__link">View full post</a>
         </li>
         {% endfor %}

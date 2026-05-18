@@ -44,37 +44,56 @@
       opacity: 0;
     }
 
-    &::scroll-button(*) {
-      position: absolute;
-      content: "<";
-      border: none;
-      background: var(--text-primary);
-      background-clip: text;
-      font-size: 2rem;
-      height: 30px;
-      width: 30px;
-      cursor: pointer;
-      z-index: 999;
-      position-area: left center;
-      position-anchor: --gitrepos;
-    }
+    @supports selector(::scroll-button(*)) {
+      &::scroll-button(*) {
+        position: absolute;
+        content: "<";
+        border: none;
+        background: var(--text-primary);
+        background-clip: text;
+        font-size: 2rem;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        z-index: 999;
+        position-area: left center;
+        position-anchor: --gitrepos;
+      }
 
-    &::scroll-button(right) {
-      content: ">";
-      position-area: right center;
-    }
+      &::scroll-button(right) {
+        content: ">";
+        position-area: right center;
+      }
 
-    &::scroll-button(*):disabled {
-      opacity: 0.2;
-      cursor: auto;
-    }
+      &::scroll-button(*):disabled {
+        opacity: 0.2;
+        cursor: auto;
+      }
 
-    /* deze twee verpesten anders de slider om een of andere reden */
-    &::scroll-button(block-start) {
-      display: none;
-    }
+      /* deze twee verpesten anders de slider om een of andere reden */
+      &::scroll-button(block-start) {
+        display: none;
+      }
 
-    &::scroll-button(block-end) {
+      &::scroll-button(block-end) {
+        display: none;
+      }
+
+      &__buttons {
+        display: none;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-s);
+    margin-top: var(--spacing-s);
+  }
+
+  @supports selector(::scroll-button(left)) {
+    &__buttons {
       display: none;
     }
   }
@@ -151,18 +170,91 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-auto-flow: dense;
     gap: 1em;
 
     &__item {
       padding: var(--spacing-s);
-      background-color: var(--background-white);
+      background-color: var(--color-background-white);
       display: grid;
       grid-row: span 3;
       grid-template-rows: subgrid;
+      border: 3px solid var(--color-ink);
       border-radius: var(--border-radius-main);
       box-shadow: var(--box-shadow-cards);
+    }
+
+    &__item--with-image {
+      color: white;
+      background-image: var(--wiki-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    &__item--with-image > * {
+      position: relative;
+      z-index: 3;
+    }
+
+    &__item--with-image::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: var(--border-radius-main);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &__item--with-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: var(--border-radius-main);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    &__item:nth-child(3n + 1) {
+      height: 10em;
+      background-color: var(--yellow-primary);
+    }
+
+    &__item:nth-child(3n + 2) {
+      height: 15em;
+      background-color: var(--green-primary);
+    }
+
+    &__item:nth-child(3n + 3) {
+      height: 10em;
+      background-color: var(--blue-primary);
+    }
+  }
+
+  @supports (display: grid-lanes) {
+    &__list {
+      display: grid-lanes;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.5em;
+      margin: 0 var(--spacing-l);
+    }
+  }
+
+  @supports (color: hsl(random(0, 360) 60% 65%)) {
+    &__list {
+      &__item {
+        background-color: hsl(random(0, 360) 50% 50%);
+      }
     }
   }
 }

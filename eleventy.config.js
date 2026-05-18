@@ -21,7 +21,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.setLiquidOptions({
     jsTruthy: true,
-    dynamicPartials: false,
+    dynamicPartials: true,
     strictFilters: false,
   });
 
@@ -34,6 +34,8 @@ export default function (eleventyConfig) {
 
   let md = markdownIt(mdOptions).use(markdownItWikilinks);
   eleventyConfig.setLibrary("md", md);
+
+  eleventyConfig.addPassthroughCopy("src/assets");
 
   // postcss setup
   eleventyConfig.addTemplateFormats("css");
