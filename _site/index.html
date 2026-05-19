@@ -247,6 +247,18 @@
           <a href="/wiki/workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
         </li>
         
+        <li class="wikis__list__item" data-tags="wiki,we-love-web">
+          <h3>We-love-web Decathlon</h3>
+          <p>With Trystian Offerman from Decathlon, about working with styleguides, design systems, and components.</p>
+          <a href="/wiki/We-love-web-Trystian-Offerman/" class="wikis__link">View full post</a>
+        </li>
+        
+        <li class="wikis__list__item" data-tags="wiki,workshop,svelte(kit)">
+          <h3>Bitacademy workshop</h3>
+          <p>Visiting bitacademy  and providing a workshop.</p>
+          <a href="/wiki/Workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
+        </li>
+        
       </ul>
     </section>
 
@@ -255,6 +267,9 @@
 </body>
 
 <script>
+  // consider: Replacing the js with a has:(selected) slector in CSS. 
+  // Js should stay as backup if selected is not present since its not baseline yet. (No support in safari and firefox yet)
+
   document.addEventListener("DOMContentLoaded", () => {
     const filterButtons = document.querySelectorAll('.wikis__filter--button');
     const blogPosts = document.querySelectorAll('.wikis__list__item');
@@ -268,14 +283,25 @@
         button.classList.add('selected');
 
         blogPosts.forEach(post => {
-          const postTags = post.getAttribute('data-tags').split(',');
 
-          if (selectedFilter === 'all') {
-            post.style.display = '';
-          } else if (postTags.includes(selectedFilter)) {
-            post.style.display = '';
+          const postTags = post.getAttribute('data-tags').split(',');
+          const matches = selectedFilter === 'all' || postTags.includes(selectedFilter);
+
+          if (matches) {
+            post.classList.remove('wikis__list__item--hidden');
+            post.classList.remove('wikis__list__item--fade-in');
+
+            // Trigger reflow to restart the animation when class is already applied
+            void post.offsetWidth;
+            post.classList.add('wikis__list__item--fade-in');
+            post.addEventListener('animationend', () => {
+              post.classList.remove('wikis__list__item--fade-in');
+            }, { once: true });
+
+
           } else {
-            post.style.display = 'none';
+            post.classList.remove('wikis__list__item--fade-in');
+            post.classList.add('wikis__list__item--hidden');
           }
         });
 

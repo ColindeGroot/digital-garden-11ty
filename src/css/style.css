@@ -19,9 +19,9 @@
 
 @media screen and (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.001ms;
   }
 }
 
@@ -80,7 +80,7 @@ body {
   --spacing-m: 1.5em;
   --spacing-l: 2em;
   --spacing-xl: 2.5em;
-  --spacing-section: 5dvh;
+  --spacing-section: 10dvh;
 
   /* borders */
   --border-card-main: 1px solid var(--color-grey-dark);

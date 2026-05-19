@@ -1,3 +1,12 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .gitshowcase {
   display: flex;
   flex-direction: column;
@@ -92,18 +101,18 @@
     margin-top: var(--spacing-s);
   }
 
-  @supports selector(::scroll-button(left)) {
+  /* @supports selector(::scroll-button(left)) {
     &__buttons {
       display: none;
     }
-  }
+  } */
 
   &__item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 25em;
-    flex: 0 0 25em;
+    height: 30em;
+    flex: 0 0 30em;
     padding: var(--spacing-s);
 
     --item-color: var(--yellow-primary);
@@ -150,7 +159,7 @@
   }
 
   &__icons {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -158,6 +167,7 @@
 
   &__content h3 {
     max-width: 70%;
+    font-size: var(--font-size-xl);
   }
 }
 
@@ -172,7 +182,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     grid-auto-flow: dense;
-    gap: 1em;
+    gap: var(--spacing-l);
 
     &__item {
       padding: var(--spacing-s);
@@ -183,6 +193,14 @@
       border: 3px solid var(--color-ink);
       border-radius: var(--border-radius-main);
       box-shadow: var(--box-shadow-cards);
+    }
+
+    &__item--fade-in {
+      animation: fade-in 0.5s ease-in-out;
+    }
+
+    &__item--hidden {
+      display: none;
     }
 
     &__item--with-image {
@@ -226,17 +244,14 @@
     }
 
     &__item:nth-child(3n + 1) {
-      height: 10em;
       background-color: var(--yellow-primary);
     }
 
     &__item:nth-child(3n + 2) {
-      height: 15em;
       background-color: var(--green-primary);
     }
 
     &__item:nth-child(3n + 3) {
-      height: 10em;
       background-color: var(--blue-primary);
     }
   }
@@ -245,16 +260,27 @@
     &__list {
       display: grid-lanes;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.5em;
       margin: 0 var(--spacing-l);
     }
   }
 
-  @supports (color: hsl(random(0, 360) 60% 65%)) {
+  @supports (padding: random(10px, 40px)) {
     &__list {
       &__item {
+        padding: random(10px, 40px);
+      }
+
+      /* &__item:nth-child(3n + 1) {
         background-color: hsl(random(0, 360) 50% 50%);
       }
+
+      &__item:nth-child(3n + 2) {
+        background-color: hsl(random(0, 360) 50% 50%);
+      }
+
+      &__item:nth-child(3n + 3) {
+        background-color: hsl(random(0, 360) 50% 50%);
+      } */
     }
   }
 }
