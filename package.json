@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update-wiki": "cd src/mijn-wiki && git pull origin master",
+    "update-wiki": "if [ -d src/mijn-wiki ]; then cd src/mijn-wiki && git pull origin master; else echo 'src/mijn-wiki not present, skipping'; fi",
     "build": "npm run update-wiki && eleventy",
     "start": "npm run update-wiki && eleventy --serve"
   },
