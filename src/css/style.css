@@ -12,6 +12,9 @@
   25% {
     transform: rotate(5deg);
   }
+  50% {
+    transform: rotate(0deg);
+  }
   75% {
     transform: rotate(-5deg);
   }
@@ -70,7 +73,7 @@ body {
   /* colors — semantic */
   --text-primary: hsl(0, 0%, 0%);
   --text-secondary: hsl(0, 0%, 100%);
-  --background-dark: var(--color-ink);
+  --background-dark: var(--text-primary);
   --background-primary: hsl(0, 0%, 93%);
   --background-white: hsl(0, 0%, 100%);
 
@@ -131,10 +134,9 @@ section {
 }
 
 .button {
-  padding: var(--spacing-xs) var(--spacing-m);
+  padding: var(--spacing-s) var(--spacing-m);
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
   text-align: center;
 
   cursor: pointer;
@@ -145,8 +147,9 @@ section {
   font-weight: 600;
   text-decoration: none;
 
-  background: var(--color-grey);
+  background-color: var(--background-dark);
   color: var(--text-secondary);
+
   transition: all 0.2s ease-in-out;
 
   &:hover {
@@ -155,8 +158,6 @@ section {
   }
 
   &--primary {
-    background: var(--color-ink);
-    color: var(--background-primary);
     border-color: var(--color-ink);
 
     &.selected,
