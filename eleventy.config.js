@@ -1,6 +1,7 @@
 import markdownIt from "markdown-it";
 import markdownItWikilinksPlugin from "markdown-it-wikilinks";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import { createRequire } from "module";
 import postcss from "postcss";
 import postcssNested from "postcss-nested";
 import autoprefixer from "autoprefixer";
@@ -18,7 +19,12 @@ const markdownItWikilinks = markdownItWikilinksPlugin({
 export default function (eleventyConfig) {
   eleventyConfig.addBundle("css");
   // syntax plugin for code block styling (```<language> in markdown)
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    init: ({ Prism }) => {
+      globalThis.Prism = Prism;
+      createRequire(import.meta.url)("prism-svelte");
+    },
+  });
   eleventyConfig.setLiquidOptions({
     jsTruthy: true,
     dynamicPartials: true,

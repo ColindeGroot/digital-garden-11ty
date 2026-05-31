@@ -8,6 +8,7 @@ description: A digital garden showcasing my projects and wiki posts.
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/home.css">
@@ -21,8 +22,22 @@ description: A digital garden showcasing my projects and wiki posts.
 
   <main>
 
+    <section class="aboutme" id="about">
+      <div class="aboutme__card">
+        <img class="aboutme__portrait" src="/assets/images/portrait.png" alt="Portrait photo" />
+        <div class="aboutme__content">
+          <h2 class="aboutme__title">Colin de Groot</h2>
+          <p class="aboutme__text">Welcome to my Digital Garden! <br /> Here you'll find a collection of my projects and
+            insights on various topics related to web development.
+          </p>
+          <p class="aboutme__text">In my garden, I aim to share my knowledge and experiences with others in the hope to
+            teach and inspire.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <section class="gitshowcase">
+    <section class="gitshowcase" id="projects">
 
       <div class="gitshowcase__wrapper">
         <h2 class="gitshowcase__title">GitHub Projects:</h2>
@@ -53,17 +68,18 @@ description: A digital garden showcasing my projects and wiki posts.
           This is most likely due to the GitHub API rate limit being exceeded. <br> please try
           again later!
         </p>
-        {% endif %}
-        <div class="gitshowcase__buttons">
+        {% else %}
+        {% comment %} <div class="gitshowcase__buttons">
           <button class="gitshowcase__button button button--primary">Previous</button>
           <button class="gitshowcase__button button button--primary">Next</button>
-        </div>
+        </div> {% endcomment %}
+        {% endif %}
       </ul>
 
 
     </section>
 
-    <section class="wikis">
+    <section class="wikis" id="wiki">
       <h2 class="wikis__title">Wiki's</h2>
 
       <div class="wikis__filters">

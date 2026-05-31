@@ -4,6 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/home.css">
@@ -14,18 +15,45 @@
 <body>
 
   <nav class="navigation">
+    <a class="navigation__name" href="/">Colin de Groot</a>
+    <button class="navigation__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="navigation__toggle-bar"></span>
+        <span class="navigation__toggle-bar"></span>
+        <span class="navigation__toggle-bar"></span>
+    </button>
     <ul class="navigation__menu">
         <li class="navigation__item"><a class="navigation__link" href="/">Home</a></li>
-        <li class="navigation__item"><a class="navigation__link" href="#">2</a></li>
-        <li class="navigation__item"><a class="navigation__link" href="#">3</a></li>
-        <li class="navigation__item"><a class="navigation__link" href="#">4</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#Projects">Projects</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#Blogs">Blogs</a></li>
     </ul>
 </nav>
 
+<script>
+    document.querySelector('.navigation__toggle').addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        this.closest('.navigation').classList.toggle('navigation--open');
+    });
+</script>
+
   <main>
 
+    <section class="aboutme" id="about">
+      <div class="aboutme__card">
+        <img class="aboutme__portrait" src="/assets/images/portrait.png" alt="Portrait photo">
+        <div class="aboutme__content">
+          <h2 class="aboutme__title">Colin de Groot</h2>
+          <p class="aboutme__text">Welcome to my Digital Garden! <br> Here you'll find a collection of my projects and
+            insights on various topics related to web development.
+          </p>
+          <p class="aboutme__text">In my garden, I aim to share my knowledge and experiences with others in the hope to
+            teach and inspire.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <section class="gitshowcase">
+    <section class="gitshowcase" id="projects">
 
       <div class="gitshowcase__wrapper">
         <h2 class="gitshowcase__title">GitHub Projects:</h2>
@@ -83,6 +111,23 @@
           <div class="gitshowcase__content">
             <h3>Connect your tribe squad page</h3>
             <p>Ontwerp en maak met een team een website met NodeJS en JSON</p>
+          </div>
+        </li>
+        
+        <li class="gitshowcase__item">
+
+          <div class="gitshowcase__icons">
+            <span class="gitshowcase__label label">HTML</span>
+            <a href="https://github.com/ColindeGroot/digital-garden-11ty" aria-label="Learn more about Digital garden 11ty" target="_blank" class="button button--rounded"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+    <polyline points="15 3 21 3 21 9"></polyline>
+    <line x1="10" y1="14" x2="21" y2="3"></line>
+</svg></a>
+          </div>
+
+          <div class="gitshowcase__content">
+            <h3>Digital garden 11ty</h3>
+            <p>Convertion of my digital playground using 11ty and its build in plugins for easy blog posts</p>
           </div>
         </li>
         
@@ -154,35 +199,16 @@
           </div>
         </li>
         
-        <li class="gitshowcase__item">
-
-          <div class="gitshowcase__icons">
-            <span class="gitshowcase__label label">JavaScript</span>
-            <a href="https://github.com/ColindeGroot/F2M3FRO" aria-label="Learn more about F2M3FRO" target="_blank" class="button button--rounded"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-    <polyline points="15 3 21 3 21 9"></polyline>
-    <line x1="10" y1="14" x2="21" y2="3"></line>
-</svg></a>
-          </div>
-
-          <div class="gitshowcase__content">
-            <h3>F2M3FRO</h3>
-            <p>Hier komen de opdrachten van de front-end lessen.</p>
-          </div>
-        </li>
-        
 
         
-        <div class="gitshowcase__buttons">
-          <button class="gitshowcase__button button button--primary">Previous</button>
-          <button class="gitshowcase__button button button--primary">Next</button>
-        </div>
+        
+        
       </ul>
 
 
     </section>
 
-    <section class="wikis">
+    <section class="wikis" id="wiki">
       <h2 class="wikis__title">Wiki's</h2>
 
       <div class="wikis__filters">
@@ -193,9 +219,9 @@
         
         <button class="wikis__filter__button button button--primary" data-filter="we-love-web">we-love-web</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="workshop">workshop</button>
+        <button class="wikis__filter__button button button--primary" data-filter="Workshop">Workshop</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="svelte(kit)">svelte(kit)</button>
+        <button class="wikis__filter__button button button--primary" data-filter="SvelteKit">SvelteKit</button>
         
         <button class="wikis__filter__button button button--primary" data-filter="css">css</button>
         
@@ -217,7 +243,7 @@
           <a href="/wiki/We-love-web-Trystian-Offerman/" class="wikis__link">View full post</a>
         </li>
         
-        <li class="wikis__list__item" data-tags="wiki,workshop,svelte(kit)">
+        <li class="wikis__list__item" data-tags="wiki,Workshop,SvelteKit">
           <h3>Bitacademy workshop</h3>
           <p>Visiting bitacademy  and providing a workshop.</p>
           <a href="/wiki/Workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
@@ -241,10 +267,10 @@
           <a href="/wiki/scroll-animations/" class="wikis__link">View full post</a>
         </li>
         
-        <li class="wikis__list__item" data-tags="wiki,css,svelte(kit)">
-          <h3>Svelte components</h3>
-          <p>Using components in sveltekit</p>
-          <a href="/wiki/svelte-components/" class="wikis__link">View full post</a>
+        <li class="wikis__list__item" data-tags="wiki,Directus,SvelteKit">
+          <h3>Pagination in SvelteKit</h3>
+          <p>Using Directus querries to improve performance</p>
+          <a href="/wiki/sveltekit-pagination/" class="wikis__link">View full post</a>
         </li>
         
       </ul>
