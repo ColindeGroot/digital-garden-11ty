@@ -86,7 +86,8 @@ description: A digital garden showcasing my projects and wiki posts.
         <button class="wikis__filter__button button button--primary selected" data-filter="all">All</button>
 
         {% for tag in collections.wikiTags %}
-        <button class="wikis__filter__button button button--primary" data-filter="{{ tag }}">{{ tag }}</button>
+        <button class="wikis__filter__button button button--primary" data-filter="{{ tag |  downcase }}">{{ tag
+          | capitalize }}</button>
         {% endfor %}
       </div>
 
@@ -128,9 +129,12 @@ description: A digital garden showcasing my projects and wiki posts.
         blogPosts.forEach(post => {
 
           const postTags = post.getAttribute('data-tags').split(',');
-          const matches = selectedFilter === 'all' || postTags.includes(selectedFilter);
+          const matches = selectedFilter === 'all' || postTags.map(tag => tag.toLowerCase()).includes(selectedFilter.toLowerCase());
+
 
           if (matches) {
+
+            console.log('matches:', matches)
             post.classList.remove('wikis__list__item--hidden');
             post.classList.remove('wikis__list__item--fade-in');
             void post.offsetWidth;

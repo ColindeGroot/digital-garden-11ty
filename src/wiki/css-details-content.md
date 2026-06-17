@@ -1,7 +1,7 @@
 ---
 title: Styling details content in CSS
 summary: Using CSS I made an interesting and enhanched layout using details and summary.
-tags: css
+tags: CSS
 ---
 
 I made an start to an interesting layout using details and summary. On mobile the summary is supposed to be invisible while on desktop they should be visible. This is due to the fact that the summary takes a lot of space on mobile while it doesn't provide extra space on desktop upon closing.

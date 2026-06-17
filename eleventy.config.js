@@ -73,7 +73,7 @@ export default function (eleventyConfig) {
 
       tags.forEach((tag) => {
         if (tag !== "wiki") {
-          tagSet.add(tag);
+          tagSet.add(tag.toLowerCase());
         }
       });
     });

@@ -24,7 +24,7 @@
     <ul class="navigation__menu">
         <li class="navigation__item"><a class="navigation__link" href="/">Home</a></li>
         <li class="navigation__item"><a class="navigation__link" href="#Projects">Projects</a></li>
-        <li class="navigation__item"><a class="navigation__link" href="#Blogs">Blogs</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="/blogs">Blogs</a></li>
     </ul>
 </nav>
 
@@ -215,17 +215,17 @@
         <button class="wikis__filter__button button button--primary selected" data-filter="all">All</button>
 
         
-        <button class="wikis__filter__button button button--primary" data-filter="Directus">Directus</button>
+        <button class="wikis__filter__button button button--primary" data-filter="directus">Directus</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="we-love-web">we-love-web</button>
+        <button class="wikis__filter__button button button--primary" data-filter="we-love-web">We-love-web</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="Workshop">Workshop</button>
+        <button class="wikis__filter__button button button--primary" data-filter="css">Css</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="SvelteKit">SvelteKit</button>
+        <button class="wikis__filter__button button button--primary" data-filter="workshop">Workshop</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="css">css</button>
+        <button class="wikis__filter__button button button--primary" data-filter="sveltekit">Sveltekit</button>
         
-        <button class="wikis__filter__button button button--primary" data-filter="new features">new features</button>
+        <button class="wikis__filter__button button button--primary" data-filter="features">Features</button>
         
       </div>
 
@@ -243,28 +243,28 @@
           <a href="/wiki/We-love-web-Trystian-Offerman/" class="wikis__link">View full post</a>
         </li>
         
-        <li class="wikis__list__item" data-tags="wiki,Workshop,SvelteKit">
-          <h3>Bitacademy workshop</h3>
-          <p>Visiting bitacademy  and providing a workshop.</p>
-          <a href="/wiki/Workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
-        </li>
-        
-        <li class="wikis__list__item" data-tags="wiki,css">
+        <li class="wikis__list__item" data-tags="wiki,CSS">
           <h3>Styling details content in CSS</h3>
           <p>Using CSS I made an interesting and enhanched layout using details and summary.</p>
           <a href="/wiki/css-details-content/" class="wikis__link">View full post</a>
-        </li>
-        
-        <li class="wikis__list__item wikis__list__item--with-image" data-tags="wiki,css,new features" style="--wiki-image: url('/assets/images/scrollbuttons.png');">
-          <h3>CSS scrollButtons</h3>
-          <p>The new CSS scrollbuttons allows us to make scroll functions without the need of js!</p>
-          <a href="/wiki/css-scrollbuttons/" class="wikis__link">View full post</a>
         </li>
         
         <li class="wikis__list__item" data-tags="wiki,css">
           <h3>Scroll animations</h3>
           <p>using scroll animations for progessive timelines in css</p>
           <a href="/wiki/scroll-animations/" class="wikis__link">View full post</a>
+        </li>
+        
+        <li class="wikis__list__item" data-tags="wiki,Workshop,SvelteKit">
+          <h3>Bitacademy workshop</h3>
+          <p>Visiting bitacademy  and providing a workshop.</p>
+          <a href="/wiki/Workshop-bitacademy-talland-college/" class="wikis__link">View full post</a>
+        </li>
+        
+        <li class="wikis__list__item wikis__list__item--with-image" data-tags="wiki,css,Features" style="--wiki-image: url('/assets/images/scrollbuttons.png');">
+          <h3>CSS scrollButtons</h3>
+          <p>The new CSS scrollbuttons allows us to make scroll functions without the need of js!</p>
+          <a href="/wiki/css-scrollbuttons/" class="wikis__link">View full post</a>
         </li>
         
         <li class="wikis__list__item" data-tags="wiki,Directus,SvelteKit">
@@ -301,9 +301,12 @@
         blogPosts.forEach(post => {
 
           const postTags = post.getAttribute('data-tags').split(',');
-          const matches = selectedFilter === 'all' || postTags.includes(selectedFilter);
+          const matches = selectedFilter === 'all' || postTags.map(tag => tag.toLowerCase()).includes(selectedFilter.toLowerCase());
+
 
           if (matches) {
+
+            console.log('matches:', matches)
             post.classList.remove('wikis__list__item--hidden');
             post.classList.remove('wikis__list__item--fade-in');
             void post.offsetWidth;

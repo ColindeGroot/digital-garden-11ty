@@ -1,7 +1,7 @@
 ---
 title: CSS scrollButtons
 summary: The new CSS scrollbuttons allows us to make scroll functions without the need of js!
-tags: ["css", "new features"]
+tags: ["css", "Features"]
 image: /assets/images/scrollbuttons.png
 ---
 
