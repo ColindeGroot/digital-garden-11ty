@@ -1,5 +1,5 @@
 import markdownIt from "markdown-it";
-import markdownItWikilinksPlugin from "markdown-it-wikilinks";
+// import markdownItWikilinksPlugin from "markdown-it-wikilinks";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { createRequire } from "module";
 import postcss from "postcss";
@@ -7,14 +7,14 @@ import postcssNested from "postcss-nested";
 import autoprefixer from "autoprefixer";
 
 // markdown-it plugin converts [[Wiki Links]] to <a href="/wiki/wiki-links/">Wiki Links</a>
-const markdownItWikilinks = markdownItWikilinksPlugin({
-  baseURL: "/wiki/",
-  makeAllLinksAbsolute: true,
-  uriSuffix: "/",
-  postProcessPageName: (pageName) => {
-    return pageName.trim().toLowerCase().replace(/\s+/g, "-");
-  },
-});
+// const markdownItWikilinks = markdownItWikilinksPlugin({
+//   baseURL: "/wiki/",
+//   makeAllLinksAbsolute: true,
+//   uriSuffix: "/",
+//   postProcessPageName: (pageName) => {
+//     return pageName.trim().toLowerCase().replace(/\s+/g, "-");
+//   },
+// });
 
 export default function (eleventyConfig) {
   eleventyConfig.addBundle("css");
@@ -38,7 +38,8 @@ export default function (eleventyConfig) {
     linkify: true,
   };
 
-  let md = markdownIt(mdOptions).use(markdownItWikilinks);
+  //.use(markdownItWikilinks)
+  let md = markdownIt(mdOptions);
   eleventyConfig.setLibrary("md", md);
 
   eleventyConfig.addPassthroughCopy("src/assets");

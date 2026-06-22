@@ -235,6 +235,8 @@
     grid-template-rows: repeat(, auto);
     grid-auto-flow: dense;
     gap: var(--spacing-l);
+
+    /* styling of actual image */
   }
 
 .wikis__list__item {
@@ -266,8 +268,6 @@
       position: relative;
       z-index: 3;
     }
-
-/* styling of actual image */
 
 .wikis__list__item--with-image::before {
       content: "";
