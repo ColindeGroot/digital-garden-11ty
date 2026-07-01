@@ -24,7 +24,11 @@ description: A digital garden showcasing my projects and wiki posts.
 
     <section class="aboutme" id="about">
       <div class="aboutme__card">
-        <img class="aboutme__portrait" src="/assets/images/portrait.png" alt="Portrait photo" />
+        <picture>
+          <source type="image/avif" srcset="/assets/images/portrait.avif">
+          <source type="image/webp" srcset="/assets/images/portrait.png?format=webp">
+          <img  class="aboutme__portrait" src="/assets/images/portrait.png" alt="Portrait photo" | image_tag />
+        </picture>
         <div class="aboutme__content">
           <h2 class="aboutme__title">Colin de Groot</h2>
           <p class="aboutme__text">Welcome to my Digital Garden! <br /> Here you'll find a collection of my projects and
@@ -61,20 +65,20 @@ description: A digital garden showcasing my projects and wiki posts.
           </div>
         </li>
         {% endfor %}
-
-        {% if github.size == 0 %}
-        <h3>No projects found! </h3>
-        <p>
-          This is most likely due to the GitHub API rate limit being exceeded. <br> please try
-          again later!
-        </p>
-        {% else %}
-        {% comment %} <div class="gitshowcase__buttons">
-          <button class="gitshowcase__button button button--primary">Previous</button>
-          <button class="gitshowcase__button button button--primary">Next</button>
-        </div> {% endcomment %}
-        {% endif %}
       </ul>
+
+      {% if github.size == 0 %}
+      <h3>No projects found! </h3>
+      <p>
+        This is most likely due to the GitHub API rate limit being exceeded. <br> please try
+        again later!
+      </p>
+      {% else %}
+      {% comment %} <div class="gitshowcase__buttons">
+        <button class="gitshowcase__button button button--primary">Previous</button>
+        <button class="gitshowcase__button button button--primary">Next</button>
+      </div> {% endcomment %}
+      {% endif %}
 
 
     </section>
@@ -92,9 +96,8 @@ description: A digital garden showcasing my projects and wiki posts.
 
       <ul class="wikis__list">
         {% for post in collections.wiki %}
-        <li class="wikis__list__item{% if post.data.image %} wikis__list__item--with-image{% endif %}"
-          data-tags="{{ post.data.tags | join: ',' }}" {% if
-          post.data.image%}style="--wiki-image: url('{{ post.data.image }}');" {% endif %}>
+        <li class="wikis__list__item{% if post.data.image %} wikis__list__item--with-image{% endif %}"data-tags="{{ post.data.tags | join: ',' }}" 
+          {% if post.data.image%}style="--wiki-image: url('{{ post.data.image }}');" {% endif %}>
           <h3>{{ post.data.title }}</h3>
           <p>{{ post.data.summary | truncate: 120 }}</p>
           <a href="{{ post.url }}" class="wikis__link">View full post</a>

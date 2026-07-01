@@ -1,18 +1,23 @@
 import "dotenv/config";
 
 export default async function () {
-  // added a token to increase amount of requests and allow for more customisation
   const gitToken = process.env.GITHUB_TOKEN;
   const username = "ColindeGroot";
   const url = `https://api.github.com/users/${username}/repos`;
 
   try {
+    const fetchHeaders = {
+      Accept: "application/vnd.github.v3+json",
+      "User-Agent": "11ty-site",
+    };
+
+    // fallback if token is missing, but will be rate limited by GitHub API
+    if (gitToken) {
+      fetchHeaders.Authorization = `Bearer ${gitToken}`;
+    }
+
     const tokenFetch = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${gitToken}`,
-        Accept: "application/vnd.github.v3+json",
-        "User-Agent": "11ty-site",
-      },
+      headers: fetchHeaders,
     });
 
     if (!tokenFetch.ok) {
@@ -28,7 +33,6 @@ export default async function () {
       };
     });
 
-    // dont return the repos without a language
     const filteredRepos = stripRepoNames.filter((repo) => repo.language);
 
     filteredRepos.forEach((repo) => {

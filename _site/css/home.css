@@ -232,7 +232,7 @@
 .wikis__list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: repeat(, auto);
+    grid-template-rows: repeat(4, auto);
     grid-auto-flow: dense;
     gap: var(--spacing-l);
 
@@ -322,21 +322,6 @@
   }
 
 @supports (padding: random(10px, 40px)) {
-    .wikis__list {
-
-      /* TODO: find a way to use random to switch the colours */
-      /* &__item:nth-child(3n + 1) {
-        background-color: hsl(random(0, 360) 50% 50%);
-      }
-
-      &__item:nth-child(3n + 2) {
-        background-color: hsl(random(0, 360) 50% 50%);
-      }
-
-      &__item:nth-child(3n + 3) {
-        background-color: hsl(random(0, 360) 50% 50%);
-      } */
-    }
       .wikis__list__item {
         --item-height: random(10em, 20em);
         height: var(--item-height);
