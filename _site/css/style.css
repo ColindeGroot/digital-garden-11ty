@@ -114,6 +114,11 @@ body{
   --box-shadow-cards-white: var(--text-secondary) 4px 4px 1px;
 }
 
+*:focus-visible {
+  outline: 3px solid var(--yellow-primary);
+  outline-offset: 2px;
+}
+
 h1,
 h2,
 h3,
